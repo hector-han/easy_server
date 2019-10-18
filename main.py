@@ -12,7 +12,7 @@ class MainHandler(tornado.web.RequestHandler):
         now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         requestId = self.get_body_argument('requestId', default='')
         code = self.get_body_argument('code', default='1')
-        text = self.get_body_argument('text', default='')
+        text = self.get_body_argument('text', default='').replace('\n', '')
         resp = {"code": 0, "message": "成功"}
         if code == '0':
             fhandler.write('[{}]: {},{}'.format(now, requestId, text) + '\n')
